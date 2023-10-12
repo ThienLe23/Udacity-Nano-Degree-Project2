@@ -38,6 +38,10 @@ def clean_data(df):
 
     df = df.drop(axis=1, columns=["categories"])
     df = pd.concat([df, categories], axis=1)
+    # Drop sample have value = 2 in related column
+    index = df[df["related"] == 2].index
+    df = df.drop(index)
+
     df.drop_duplicates(inplace=True)
     return df
 
@@ -52,7 +56,7 @@ def save_data(df, database_filename):
     
     """
     engine = create_engine(f"sqlite:///{database_filename}")
-    df.to_sql('disaster', engine, index=False)
+    df.to_sql('disaster', engine, index=False, if_exists="replace")
 
 
 def main():

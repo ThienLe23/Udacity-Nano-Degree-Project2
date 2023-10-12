@@ -13,6 +13,8 @@
   - ETL Pipeline that preprocess, clean and save data
   - Machine Learning Pipeline  that preprocess, transform data and train machine learning model to predict category of a message
   - Web application for user can use model directly by entering message, model will predict and show result
+
+  Model can categorize message about the type of disaster so that event is sent to disaster relief agency and they will have appropriate solution to help. 
  
   ### File Description
 ```
