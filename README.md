@@ -4,8 +4,8 @@
  * [Project Motivation](#project-motivation)
  * [File Description](#file-description)
  * [Components](#components)
- * [How to run project](#run-project)
- * [License, Authors, Acknowledgements, etc.](#liecense)
+ * [Run project](#run-project)
+ * [Licensing, Authors, Acknowledgements, etc.](#licensing-authors-acknowledgements-etc)
 
  ### Project Motivation
 
@@ -43,23 +43,26 @@
   - Build machine learning pipeline to transform and predict data
   - Train model and search hyperparameters
   - Export model to pickle file
- #### 3. Flask App
- Flask web appication that show some statistc about disaster dataset and enable user to enter a message then get result about category of that message
+  #### 3. Flask App
+  Flask web appication that show some statistc about disaster dataset and enable user to enter a message then get result about category of that message
 
- ![web_app](images/web_app.JPG)
+  ![web_app](images/web_app.JPG)
 
- ![prediction](images/prediction.JPG)
+  ![prediction](images/prediction.JPG)
 
- ### How to run project
- 1. Run the following commands in the project's root directory to set up your database and model.
+  ### Run project
+  1. Run the following commands in the project's root directory to set up your database and model.
 
     - To run ETL pipeline that cleans data and stores in database
         `python data/process_data.py data/disaster_messages.csv data/disaster_categories.csv data/DisasterResponse.db`
     - To run ML pipeline that trains classifier and saves
         `python models/train_classifier.py data/DisasterResponse.db models/classifier.pkl`
 
- 2. Go to `app` directory: `cd app`
+  2. Go to `app` directory: `cd app`
 
- 3. Run your web app: `python run.py`
+  3. Run your web app: `python run.py`
 
- 4. Go to http://localhost:3000
+  4. Go to http://localhost:3000
+
+### Licensing, Authors, Acknowledgements, etc.
+Thanks to Udacity for starter code for the web app. 
