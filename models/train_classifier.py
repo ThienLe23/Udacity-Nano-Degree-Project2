@@ -22,6 +22,11 @@ from sklearn.metrics import classification_report
 nltk.download(['punkt', 'wordnet'])
 
 def load_data(database_filepath):
+    """
+    Load data from database file
+    Parameters:
+        database_filepath: database file
+    """
     engine = create_engine(f'sqlite:///{database_filepath}')
     df = pd.read_sql_table("disaster", con=engine)
 
@@ -31,6 +36,13 @@ def load_data(database_filepath):
     return X, Y, category_names
 
 def tokenize(text):
+    """
+    Tokenize text into a list of tokens
+    Parameters:
+        text: text string 
+    Returns:
+        tokens: list of tokens
+    """
     tokens = word_tokenize(text)
     lemmatizer = WordNetLemmatizer()
 
@@ -39,6 +51,11 @@ def tokenize(text):
 
 
 def build_model():
+    """
+    Create ML pipeline and GridSearch pipeline for hyperparameters tuning
+    Returns:
+        cv: model object is used to predict new sample
+    """
     pipeline = Pipeline([
         ('count_vector', CountVectorizer(tokenizer=tokenize)),
         ('tfidf', TfidfTransformer()),
@@ -55,12 +72,24 @@ def build_model():
 
 
 def evaluate_model(model, X_test, Y_test, category_names):
+    """
+    Evaluate model with test dataset print some metrics
+    Parameters:
+        model: model object
+        X_test, Y_test: Input data and label data
+    """
     Y_pred = model.predict(X_test)
     for i, category_name in enumerate(Y_test):
         print(category_name, classification_report(Y_test[category_name], Y_pred[:, i]))
 
 
 def save_model(model, model_filepath):
+    """
+    Save model object to pickle file
+    Parameters:
+        model: model object
+        model_filepath: filepath to save model
+    """
     with open(model_filepath, "wb") as f:
         pickle.dump(model, f)
 
